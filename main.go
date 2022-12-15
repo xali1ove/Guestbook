@@ -5,6 +5,7 @@ import (
 	"net/http"
 )
 
+// mi proveryaem git
 //all errors
 func check(err error) {
 	if err != nil {
