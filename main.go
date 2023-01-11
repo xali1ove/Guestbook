@@ -3,6 +3,7 @@ package main
 import (
 	"log"
 	"net/http"
+	"html/template"
 )
 
 //all errors
@@ -14,8 +15,9 @@ func check(err error) {
 
 //функция-обработчик
 func viewHandler(writer http.ResponseWriter, request *http.Request) {
-	placeholder := []byte("signature list goes here")
-	_, err := writer.Write(placeholder)
+	html, err := template.ParseFiles("view.html") //содержимое html используется для создания нового значени teamplate
+	check(err)
+	err = html.Execute(writer, nil) //содержимое шаблона записывается в ResponseWriter
 	check(err)
 }
 
